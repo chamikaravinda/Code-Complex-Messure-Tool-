@@ -80,6 +80,7 @@ public class ControlStructureController {
 				BufferedReader reader = new BufferedReader(new FileReader(readFile));
 				
 				String line = reader.readLine();
+				
 				while (line != null) {
 					
 					ControlStructureType obj = new ControlStructureType();
