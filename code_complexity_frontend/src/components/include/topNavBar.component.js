@@ -24,11 +24,11 @@ export default class TopNavbar extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
   render() {
-    if (localStorage.getItem("status")) {
+    if (localStorage.getItem('status')) {
       return (
         <MDBNavbar color="primary-color-dark" dark expand="md">
           <MDBNavbarBrand>
-            <strong className="white-text">Navbar</strong>
+            <Link to ="/"><strong className="white-text">Code Complex Tool</strong></Link>
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>

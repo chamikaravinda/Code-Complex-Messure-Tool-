@@ -1,4 +1,4 @@
-package com.taxperts.webapp.exceptions;
+package com.spm.codecomplexity.exceptions;
 
 public class CustomException extends RuntimeException {
 	
