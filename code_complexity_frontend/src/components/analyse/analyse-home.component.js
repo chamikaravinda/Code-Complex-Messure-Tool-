@@ -15,6 +15,7 @@ class AnalyseHome extends Component {
         }
 
         this.onClickCtc = this.onClickCtc.bind(this);
+        this.onClickCs = this.onClickCs.bind(this);
     }
 
     componentDidMount() {
@@ -37,12 +38,24 @@ class AnalyseHome extends Component {
             })
     }
 
+    onClickCs(){
+
+        axios.get(constants.url + "/statmentsize/analyse/" + this.state.fileId )
+            .then(res=>{
+                swal("Complexity of a program statement due to size " + res.data);
+                console.log("dss" + res.data);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    }
+
     render() {
         return(
             <>
                 <MDBContainer className="w-25 mt-5">
 
-                    <MDBBtn>Complexity due to size (Cs)</MDBBtn>
+                    <MDBBtn onClick={this.onClickCs}>Complexity due to size (Cs)</MDBBtn>
                     <MDBBtn onClick={this.onClickCtc}> Complexity due to type of control structures (Ctc)</MDBBtn>
                     <MDBBtn>Complexity due to nesting of control structures (Cnc) </MDBBtn>
                     <MDBBtn>Complexity due to inheritance (Ci) </MDBBtn>
