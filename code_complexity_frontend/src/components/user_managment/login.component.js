@@ -33,11 +33,11 @@ export default class UserLogin extends Component {
   }
 
   componentDidMount(){
-    if(localStorage.getItem("status") == " "|| localStorage.getItem("status") == null ){
+    if(localStorage.getItem("status")){
       this.props.history.push("/")
     }
   }
-  
+
   onChangeEmail(e){
     this.setState({
       email: e.target.value
@@ -64,13 +64,13 @@ export default class UserLogin extends Component {
       .post(constants.url + "/user/login", user)
       .then(res => {
         console.log(res.data.email);
-        localStorage.setItem("id",res.data._id);
-        localStorage.setItem("name",res.data.name);
-        localStorage.setItem("email",res.data.email);
-        localStorage.setItem("status",true);
+        localStorage.setItem('id',res.data._id);
+        localStorage.setItem('name',res.data.name);
+        localStorage.setItem('email',res.data.email);
+        localStorage.setItem('status',true);
 
-       // this.props.history.push("/");
-       // window.location.reload();
+        this.props.history.push("/");
+        window.location.reload();
 
       })
       .catch(err => {

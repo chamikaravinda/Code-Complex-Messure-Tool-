@@ -12,42 +12,53 @@ import {
 } from "mdbreact";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
-    
+import {
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBNavbarToggler,
+  MDBCollapse,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+  MDBIcon
+} from "mdbreact";
 
-export default class Navbar extends Component {
+export default class BottomNavbar extends Component {
+  state = {
+    isOpen: false
+  };
 
-    state = {
-        isOpen: false
-      };
-      
-      toggleCollapse = () => {
-        this.setState({ isOpen: !this.state.isOpen });
-      }
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
   render() {
-    return (
+    if (localStorage.getItem('status')) {
+      return (
         <Router>
-
-        <MDBNavbar color="primary-color" dark expand="md">
-          
-          <MDBNavbarToggler onClick={this.toggleCollapse} />
-          <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-            <MDBNavbarNav center>
-              <MDBNavItem active>
-                <MDBNavLink to="#!">Home</MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-                <MDBNavLink to="#!">Features</MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-                <MDBNavLink to="#!">Pricing</MDBNavLink>
-              </MDBNavItem>
-            
-            </MDBNavbarNav>
-            
-          </MDBCollapse>
-        </MDBNavbar>
-      </Router>
-    );
+          <MDBNavbar color="primary-color" dark expand="md">
+            <MDBNavbarToggler onClick={this.toggleCollapse} />
+            <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+              <MDBNavbarNav center>
+                <MDBNavItem active>
+                  <MDBNavLink to="#!">Home</MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink to="#!">Features</MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink to="#!">Pricing</MDBNavLink>
+                </MDBNavItem>
+              </MDBNavbarNav>
+            </MDBCollapse>
+          </MDBNavbar>
+        </Router>
+      );
+    } else {
+      return <div />;
+    }
   }
 }

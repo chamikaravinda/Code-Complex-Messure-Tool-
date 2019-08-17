@@ -70,7 +70,7 @@ public class UserController {
 				throw new CustomException("The password is invalid");
 			}
 			
-			return new ResponseEntity<Object>(user, HttpStatus.OK);
+			return new ResponseEntity<Object>(isValidUser, HttpStatus.OK);
 
 		} catch (CustomException e) {
 			
