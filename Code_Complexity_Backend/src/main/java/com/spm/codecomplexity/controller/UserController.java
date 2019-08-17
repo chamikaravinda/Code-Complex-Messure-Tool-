@@ -56,5 +56,41 @@ public class UserController {
 			return new ResponseEntity<>(errors, HttpStatus.BAD_GATEWAY);
 		}
 	}
+	
+	@PostMapping("/user/login")
+	public ResponseEntity<Object> userLogin(@RequestBody User user) {
+		try {
+			
+			User isValidUser = userRepo.findByemail(user.getEmail());
+
+			if (isValidUser == null) {
+				throw new CustomException("The email : " + user.getEmail() + " is not exists");
+			}
+			if(!isValidUser.getPassword().equals(user.getPassword())){
+				throw new CustomException("The password is invalid");
+			}
+			
+			return new ResponseEntity<Object>(user, HttpStatus.OK);
+
+		} catch (CustomException e) {
+			
+			System.out.println("Error" + e.getMessage());
+			
+			CustomErrorResponse errors = new CustomErrorResponse();
+			errors.setError(e.getMessage());
+			errors.setStatus(HttpStatus.CONFLICT.value());
+
+			return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			
+			System.out.println("Error" + e.getMessage());
+			
+			CustomErrorResponse errors = new CustomErrorResponse();
+			errors.setError("Unknown error");
+			errors.setStatus(HttpStatus.BAD_GATEWAY.value());
+
+			return new ResponseEntity<>(errors, HttpStatus.BAD_GATEWAY);
+		}
+	}
 
 }

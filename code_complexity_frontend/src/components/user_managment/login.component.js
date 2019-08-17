@@ -12,8 +12,74 @@ import {
 } from "mdbreact";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import swal from "sweetalert";
+import axios from "axios";
+import constants from "../../util/constants";
+
 
 export default class UserLogin extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.onChangeEmail= this.onChangeEmail.bind(this);
+    this.onChanagePassword = this.onChanagePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state={
+      email:null,
+      password:null
+    }
+  }
+
+  componentDidMount(){
+    if(localStorage.getItem("status") == " "|| localStorage.getItem("status") == null ){
+      this.props.history.push("/")
+    }
+  }
+  
+  onChangeEmail(e){
+    this.setState({
+      email: e.target.value
+    });
+  }
+
+  onChanagePassword(e){
+    this.setState({
+      password: e.target.value
+    });
+  }
+
+  onSubmit(e){
+    e.preventDefault();
+    if(this.state.email==null || this.state.password==null){
+      swal("Error","Enter valid email and passowrd","error");
+    }else{
+      let user={
+        email:this.state.email,
+        password:this.state.password
+      }
+
+      axios
+      .post(constants.url + "/user/login", user)
+      .then(res => {
+        console.log(res.data.email);
+        localStorage.setItem("id",res.data._id);
+        localStorage.setItem("name",res.data.name);
+        localStorage.setItem("email",res.data.email);
+        localStorage.setItem("status",true);
+
+       // this.props.history.push("/");
+       // window.location.reload();
+
+      })
+      .catch(err => {
+        swal("Error", err.response.data.error + "", "error");
+        console.log(err);
+      });
+    }
+    
+  }
   render() {
     return (
       <MDBContainer className="w-25 mt-5">
@@ -25,7 +91,7 @@ export default class UserLogin extends Component {
             Sign in
           </MDBCardHeader>
           <MDBCardBody>
-            <form>
+            <form onSubmit={this.onSubmit}>
               <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
                 Your email
               </label>
@@ -33,6 +99,8 @@ export default class UserLogin extends Component {
                 type="email"
                 id="defaultFormLoginEmailEx"
                 className="form-control"
+                onChange={this.onChangeEmail}
+                value={this.state.email}
               />
 
               <br />
@@ -44,6 +112,8 @@ export default class UserLogin extends Component {
                 type="password"
                 id="defaultFormLoginPasswordEx"
                 className="form-control"
+                onChange={this.onChanagePassword}
+                value={this.state.password}
               />
 
               <div className="text-center mt-4">

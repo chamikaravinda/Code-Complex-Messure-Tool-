@@ -8,19 +8,20 @@ import UserRegister from './components/user_managment/register.component'
 import UserLogin from './components/user_managment/login.component'
 
 function App() {
+  
   return (
     <Router>
-      {/* {localStorage.getItem("userId") !== null ?
+      {localStorage.getItem("status") !== null ?
         <>
-          
+
         </> 
         :
-        <> */}
+        <>
             <Route exact path="/" component={UserLogin}/>
             <Route path="/login" component={UserLogin}/>
             <Route path="/register" component={UserRegister}/>
-        {/* </> 
-        }       */}
+        </> 
+        }      
     </Router>
   );
 }
