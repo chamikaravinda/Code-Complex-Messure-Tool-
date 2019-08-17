@@ -33,6 +33,10 @@ function App() {
 
             <Route path = "/report/:id" component = {FileReportComponent} />
 
+
+            <Route path = "/report/:id" component = {FileReportComponent} />
+
+
             <Route path="/login" component={UserLogin}/>
             <Route path="/register" component={UserRegister}/>
             <Route path="/logout" component={Logout} />

@@ -78,7 +78,7 @@ class AnalyseHome extends Component {
     }
 
     render() {
-        return(
+        return (
             <>
                 <MDBContainer className="w-25 mt-5">
                     <h4>Measuring the complexity of file {this.state.file.fileName}</h4>
@@ -87,7 +87,7 @@ class AnalyseHome extends Component {
                     <MDBBtn>Complexity due to nesting of control structures (Cnc) </MDBBtn>
                     <MDBBtn>Complexity due to inheritance (Ci) </MDBBtn>
                     <MDBBtn>Complexity due to recursion (Cr) </MDBBtn>
-                    <Link to = {'/report/' + this.state.fileId} className='btn btn-black'> File Analysis Report </Link>
+                    <Link to={'/report/' + this.state.fileId} className='btn btn-black'> File Analysis Report </Link>
                 </MDBContainer>
             </>
         )
@@ -157,4 +157,6 @@ class AnalyseHome extends Component {
 
 }
 
+
 export default AnalyseHome;
+
