@@ -55,11 +55,11 @@ export default class UserRegister extends Component {
 
   /*onChange methods */
   componentDidMount(){
-    if(localStorage.getItem("status") == " "|| localStorage.getItem("status") == null ){
+    if(localStorage.getItem("status")){
       this.props.history.push("/")
     }
   }
-  
+
   onChangeName(e) {
     this.setState({
       name: e.target.value
