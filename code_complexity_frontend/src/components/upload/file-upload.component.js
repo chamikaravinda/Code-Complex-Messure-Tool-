@@ -37,6 +37,9 @@ class FileUpload extends Component {
     }
 
     componentDidMount() {
+        if(!localStorage.getItem('status')){
+            this.props.history.push("/login")
+        }
         this.loadAllFiles();
     }
 

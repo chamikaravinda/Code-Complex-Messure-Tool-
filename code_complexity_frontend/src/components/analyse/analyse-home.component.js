@@ -18,6 +18,9 @@ class AnalyseHome extends Component {
     }
 
     componentDidMount() {
+        if(!localStorage.getItem('status')){
+            this.props.history.push("/login")
+          }
         this.setState({
             fileId : this.props.match.params.id
         })
