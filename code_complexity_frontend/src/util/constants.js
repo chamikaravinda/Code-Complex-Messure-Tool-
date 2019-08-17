@@ -1,4 +1,4 @@
-const serverPort = 8080;
+const serverPort = 5000;
 const clientPort = 3000;
 
 const constants = {

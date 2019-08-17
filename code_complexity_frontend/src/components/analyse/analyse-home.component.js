@@ -22,13 +22,12 @@ class AnalyseHome extends Component {
     }
 
     componentDidMount() {
-<<<<<<< Updated upstream
-=======
+
         if(!localStorage.getItem('status')){
             this.props.history.push("/login")
           }
         this.loadFileDetails();
->>>>>>> Stashed changes
+
         this.setState({
             fileId : this.props.match.params.id
         })
@@ -61,7 +60,7 @@ class AnalyseHome extends Component {
     }
 
     render() {
-        return(
+        return (
             <>
                 <MDBContainer className="w-25 mt-5">
                     <h4>Measuring the complexity of file {this.state.file.fileName}</h4>
@@ -70,11 +69,11 @@ class AnalyseHome extends Component {
                     <MDBBtn>Complexity due to nesting of control structures (Cnc) </MDBBtn>
                     <MDBBtn>Complexity due to inheritance (Ci) </MDBBtn>
                     <MDBBtn>Complexity due to recursion (Cr) </MDBBtn>
-                    <Link to = {'/report/' + this.state.fileId} className='btn btn-black'> File Analysis Report </Link>
+                    <Link to={'/report/' + this.state.fileId} className='btn btn-black'> File Analysis Report </Link>
                 </MDBContainer>
             </>
         )
     }
 }
 
-export default AnalyseHome
+export default AnalyseHome;
