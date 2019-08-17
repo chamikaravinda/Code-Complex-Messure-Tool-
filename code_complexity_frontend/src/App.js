@@ -14,6 +14,7 @@ import Logout from "./components/user_managment/logout.component";
 
 import FileUploadComponent from './components/upload/file-upload.component'
 import FileAnalyseComponent from './components/analyse/analyse-home.component'
+import FileReportComponent from './components/analyse/single-file-report.component';
 
 
 function App() {
@@ -24,6 +25,14 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path = "/upload" component = {FileUploadComponent} />
             <Route path = "/analyse/:id" component = {FileAnalyseComponent} />
+
+        </>
+        :
+        <>
+            <Route exact path="/" component={UserLogin}/>
+
+            <Route path = "/report/:id" component = {FileReportComponent} />
+
             <Route path="/login" component={UserLogin}/>
             <Route path="/register" component={UserRegister}/>
             <Route path="/logout" component={Logout} />
