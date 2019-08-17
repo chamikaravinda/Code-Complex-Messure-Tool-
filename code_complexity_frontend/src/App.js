@@ -20,9 +20,6 @@ import FileReportComponent from './components/analyse/single-file-report.compone
 function App() {
   return (
     <Router>
-
-      {localStorage.getItem('status') ?
-        <>
             <TopNavBar />
             <BottomNavBar />
             <Route exact path="/" component={Home} />
@@ -33,13 +30,16 @@ function App() {
         :
         <>
             <Route exact path="/" component={UserLogin}/>
+
             <Route path = "/report/:id" component = {FileReportComponent} />
+
+
+            <Route path = "/report/:id" component = {FileReportComponent} />
+
+
             <Route path="/login" component={UserLogin}/>
             <Route path="/register" component={UserRegister}/>
             <Route path="/logout" component={Logout} />
-        </> 
-        }      
-
     </Router>
   );
 }

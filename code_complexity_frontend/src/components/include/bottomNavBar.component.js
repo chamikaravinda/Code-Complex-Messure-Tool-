@@ -38,16 +38,15 @@ export default class BottomNavbar extends Component {
   render() {
     if (localStorage.getItem('status')) {
       return (
-        <Router>
           <MDBNavbar color="primary-color" dark expand="md">
             <MDBNavbarToggler onClick={this.toggleCollapse} />
             <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
               <MDBNavbarNav center>
                 <MDBNavItem active>
-                  <MDBNavLink to="#!">Home</MDBNavLink>
+                  <MDBNavLink to="/">Home</MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to="#!">Features</MDBNavLink>
+                  <MDBNavLink to="/upload">Upload</MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBNavLink to="#!">Pricing</MDBNavLink>
@@ -55,7 +54,6 @@ export default class BottomNavbar extends Component {
               </MDBNavbarNav>
             </MDBCollapse>
           </MDBNavbar>
-        </Router>
       );
     } else {
       return <div />;

@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spm.codecomplexity.dao.UserRepo;
+import com.spm.codecomplexity.exceptions.CustomErrorResponse;
+import com.spm.codecomplexity.exceptions.CustomException;
 import com.spm.codecomplexity.model.User;
-import com.taxperts.webapp.exceptions.CustomErrorResponse;
-import com.taxperts.webapp.exceptions.CustomException;
 
 
 @RestController
