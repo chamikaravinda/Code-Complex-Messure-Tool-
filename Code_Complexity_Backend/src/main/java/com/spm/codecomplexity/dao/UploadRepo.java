@@ -6,4 +6,5 @@ import com.spm.codecomplexity.model.Upload;
 
 public interface UploadRepo extends MongoRepository<Upload, String>{
 
+	public Upload findBy_id( String id );
 }

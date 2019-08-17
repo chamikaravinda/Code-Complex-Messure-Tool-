@@ -6,9 +6,13 @@ import { BrowserRouter as Router,Route,Link } from "react-router-dom";
 //Component import
 import UserRegister from './components/user_managment/register.component'
 import UserLogin from './components/user_managment/login.component'
-import Navbar from './components/include/navbar.component'
-import Slidebar from './components/include/slidebar.component'
+//import Navbar from './components/include/navbar.component'
+//import Slidebar from './components/include/slidebar.component'
 import Home from './components/home/home.component'
+
+
+import FileUploadComponent from './components/upload/file-upload.component'
+import FileAnalyseComponent from './components/analyse/analyse-home.component'
 
 
 function App() {
@@ -17,8 +21,9 @@ function App() {
     <Router>
       {localStorage.getItem("status") !== null ?
         <>
-
-        </> 
+            <Route path = "/upload" component = {FileUploadComponent} />
+            <Route path = "/analyse/:id" component = {FileAnalyseComponent} />
+        </>
         :
         <>
             <Route exact path="/" component={UserLogin}/>
