@@ -13,10 +13,11 @@ public class Upload {
 	private ObjectId _id;
 	
 	private byte[] file;
-	private String fileNmae;
+	private String fileName;
 	private String uploadDate;
 	private String uploadTime;
 	private ObjectId projectId;
+	
 	public String get_id() {
 		return _id.toHexString();
 	}
@@ -29,11 +30,12 @@ public class Upload {
 	public void setFile(byte[] file) {
 		this.file = file;
 	}
-	public String getFileNmae() {
-		return fileNmae;
+
+	public String getFileName() {
+		return fileName;
 	}
-	public void setFileNmae(String fileNmae) {
-		this.fileNmae = fileNmae;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	public String getUploadDate() {
 		return uploadDate;
@@ -55,7 +57,7 @@ public class Upload {
 	}
 	@Override
 	public String toString() {
-		return "Upload [_id=" + _id + ", file=" + Arrays.toString(file) + ", fileNmae=" + fileNmae + ", uploadDate="
+		return "Upload [_id=" + _id + ", file=" + Arrays.toString(file) + ", fileName=" + fileName + ", uploadDate="
 				+ uploadDate + ", uploadTime=" + uploadTime + ", projectId=" + projectId + "]";
 	}
 	
