@@ -12,24 +12,20 @@ import Home from './components/home/home.component'
 
 
 function App() {
+  
   return (
     <Router>
-      {/* {localStorage.getItem("userId") !== null ?
+      {localStorage.getItem("status") !== null ?
         <>
-          
+
         </> 
         :
-        <> */}
-            <Route path="/home" component={Home}/>
+        <>
             <Route exact path="/" component={UserLogin}/>
             <Route path="/login" component={UserLogin}/>
             <Route path="/register" component={UserRegister}/>
-           
-
-            <Navbar/>
-            <Slidebar/>
-           
-      
+        </> 
+        }      
     </Router>
   );
 }
