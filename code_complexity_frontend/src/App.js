@@ -9,6 +9,7 @@ import UserLogin from "./components/user_managment/login.component";
 import TopNavBar from "./components/include/topNavBar.component";
 import BottomNavBar from "./components/include/bottomNavBar.component";
 import Home from "./components/home/home.component";
+import Logout from "./components/user_managment/logout.component";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <BottomNavBar />
       <Route exact path="/" component={Home} />
       <Route path="/login" component={UserLogin} />
-      <Route path="/register" component={UserRegister} />
+      <Route path="/logout" component={Logout} />
+      <Route path="/register" component={UserRegister}/>   
     </Router>
   );
 }

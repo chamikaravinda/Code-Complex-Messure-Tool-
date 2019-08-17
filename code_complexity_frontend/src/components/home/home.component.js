@@ -14,6 +14,12 @@ import {
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class UserLogin extends Component {
+
+  componentDidMount(){
+    if(!localStorage.getItem('status')){
+      this.props.history.push("/login")
+    }
+  }
   render() {
     return (
      <div>
