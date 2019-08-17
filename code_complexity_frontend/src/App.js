@@ -1,3 +1,4 @@
+
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
@@ -10,37 +11,26 @@ import TopNavBar from "./components/include/topNavBar.component";
 import BottomNavBar from "./components/include/bottomNavBar.component";
 import Home from "./components/home/home.component";
 import Logout from "./components/user_managment/logout.component";
+import FileReportComponent from './components/analyse/single-file-report.component'
 
 
 import FileUploadComponent from './components/upload/file-upload.component'
 import FileAnalyseComponent from './components/analyse/analyse-home.component'
-import FileReportComponent from './components/analyse/single-file-report.component';
 
 
 function App() {
   return (
-    <Router>
-            <TopNavBar />
-            <BottomNavBar />
-            <Route exact path="/" component={Home} />
-            <Route path = "/upload" component = {FileUploadComponent} />
-            <Route path = "/analyse/:id" component = {FileAnalyseComponent} />
-
-        </>
-        :
-        <>
-            <Route exact path="/" component={UserLogin}/>
-
-            <Route path = "/report/:id" component = {FileReportComponent} />
-
-
-            <Route path = "/report/:id" component = {FileReportComponent} />
-
-
-            <Route path="/login" component={UserLogin}/>
-            <Route path="/register" component={UserRegister}/>
-            <Route path="/logout" component={Logout} />
-    </Router>
+      <Router>
+        <TopNavBar />
+        <BottomNavBar />
+        <Route exact path="/" component={Home} />
+        <Route path = "/upload" component = {FileUploadComponent} />
+        <Route path = "/analyse/:id" component = {FileAnalyseComponent} />
+        <Route path="/login" component={UserLogin}/>
+        <Route path="/register" component={UserRegister}/>
+        <Route path="/logout" component={Logout} />
+        <Route path = "/report/:id" component = {FileReportComponent} />
+      </Router>
   );
 }
 

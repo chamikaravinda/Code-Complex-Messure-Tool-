@@ -60,7 +60,7 @@ public class StatmentSizeController {
 
 		}catch (Exception e) {
 			
-			System.out.println("Error" + e.getMessage());
+			System.out.println("Error " + e);
 			e.printStackTrace();
 			CustomErrorResponse errors = new CustomErrorResponse();
 			errors.setError("Unknown error");

@@ -80,29 +80,21 @@ class AnalyseHome extends Component {
     render() {
         return (
             <>
-                <MDBContainer className="w-25 mt-5">
+                <MDBContainer className="w-25 mt-6">
                     <h4>Measuring the complexity of file {this.state.file.fileName}</h4>
                     <MDBBtn>Complexity due to size (Cs)</MDBBtn>
                     <MDBBtn onClick={this.onClickCtc}> Complexity due to type of control structures (Ctc)</MDBBtn>
                     <MDBBtn>Complexity due to nesting of control structures (Cnc) </MDBBtn>
                     <MDBBtn>Complexity due to inheritance (Ci) </MDBBtn>
                     <MDBBtn>Complexity due to recursion (Cr) </MDBBtn>
-                    <Link to={'/report/' + this.state.fileId} className='btn btn-black'> File Analysis Report </Link>
+
                 </MDBContainer>
+
             </>
         )
     }
 
-  onClickCtc() {
-    axios
-      .get(constants.url + "/controlStructure/analyse/" + this.state.fileId)
-      .then(res => {
-        swal("No of if statements in the code " + res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+ 
 
   onClickCs() {
     axios
@@ -150,6 +142,14 @@ class AnalyseHome extends Component {
               </MDBBtn>
             </MDBCol>
           </MDBRow>
+            <MDBRow>
+                <MDBCol sm="4">
+
+                </MDBCol>
+                <MDBCol sm="4">
+                    <Link to={'/report/' + this.state.fileId} className='btn btn-black'> File Analysis Report </Link>
+                </MDBCol>
+            </MDBRow>
         </MDBContainer>
       </>
     );
