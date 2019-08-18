@@ -38,7 +38,7 @@ public class RecursiveService {
 
 		int	Cps = getStatmentSize(id) * TW;
 		
-		return Cps;
+		return Cps*2;
 		
 	}
 
