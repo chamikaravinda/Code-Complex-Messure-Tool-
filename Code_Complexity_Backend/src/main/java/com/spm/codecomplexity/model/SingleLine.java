@@ -1,6 +1,6 @@
 package com.spm.codecomplexity.model;
 
-public class ControlStructureType {
+public class SingleLine {
 
 	private String statement;
 	private int cs;

@@ -19,43 +19,17 @@ class AnalyseHome extends Component {
         }
     }
 
-    loadTotal(){
-
-        axios.get(constants.url + "/controlStructure/total/ctc/" + this.props.match.params.id )
-            .then(res=>{
-                this.setState({
-                    total : res.data
-                })
-            })
-            .catch(err=>{
-                console.log(err);
-            })
-    }
-
     componentDidMount() {
         if(!localStorage.getItem('status')){
             this.props.history.push("/login")
         }
-        this.loadFileDetails();
+
         this.loadReport();
-        this.loadTotal();
         this.setState({
             fileId : this.props.match.params.id
         })
     }
 
-    loadFileDetails(){
-        axios.get(constants.url + "/file/single/" + this.props.match.params.id )
-            .then(res=>{
-                this.setState({
-                    file : res.data
-                })
-            })
-            .catch(err=>{
-                console.log(err);
-            })
-
-    }
 
     loadReport(){
         axios.get(constants.url + "/controlStructure/analyse/" + this.props.match.params.id )
@@ -115,7 +89,7 @@ class AnalyseHome extends Component {
                                <td></td>
                                <td></td>
                                <td></td>
-                               <td> <h6>{this.state.total}</h6></td>
+                               <td> <h6>total</h6></td>
                            </tr>
                        </MDBTableBody>
                    </MDBTable>

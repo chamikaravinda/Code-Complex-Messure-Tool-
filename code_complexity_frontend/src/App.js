@@ -15,7 +15,6 @@ import FileReportComponent from './components/analyse/single-file-report.compone
 
 
 import FileUploadComponent from './components/upload/file-upload.component'
-import FileAnalyseComponent from './components/analyse/analyse-home.component'
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
         <BottomNavBar />
         <Route exact path="/" component={Home} />
         <Route path = "/upload" component = {FileUploadComponent} />
-        <Route path = "/analyse/:id" component = {FileAnalyseComponent} />
         <Route path="/login" component={UserLogin}/>
         <Route path="/register" component={UserRegister}/>
         <Route path="/logout" component={Logout} />
