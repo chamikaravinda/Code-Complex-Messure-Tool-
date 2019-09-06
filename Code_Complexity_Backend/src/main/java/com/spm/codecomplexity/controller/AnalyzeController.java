@@ -3,6 +3,7 @@ package com.spm.codecomplexity.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.spm.codecomplexity.services.InheritenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,9 @@ public class AnalyzeController {
 	
 	@Autowired
 	ControlStructureService controlStuctureService;
+
+	@Autowired
+	InheritenceService inheritenceService;
 	
 	@GetMapping("/controlStructure/analyse/{id}")
 	public List<SingleLine> analyseFile( @PathVariable String id ) {
@@ -37,7 +41,10 @@ public class AnalyzeController {
 		try {
 			list=statmentSizeService.calculateComplexityDueToStatmentSize(list);
 			list=controlStuctureService.calculateComplexityDueToControlStructures(list);
-			//pass the list to your service here as done in the above line 
+
+			list =inheritenceService.calculateComplexityDueToInheritenceStructures(list);
+
+		//pass the list to your service here as done in the above line
 			// make your service read the list line by line and caculate the complexity and set the complexity using given set method
 			//use getStament method in SingleLine object to read the line
 			
