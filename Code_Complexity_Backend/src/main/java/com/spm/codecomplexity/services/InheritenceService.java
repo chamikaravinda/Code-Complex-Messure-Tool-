@@ -25,6 +25,15 @@ public class InheritenceService {
                 totalInheritCount = totalInheritCount + count + items.length;
                 System.out.println("Inheritence : " + totalInheritCount);
                 System.out.println("Complexity according to Inheritence : " + (totalInheritCount + 1));
+            } else if (line.getStatement().contains("extends")) {
+                System.out.println("__________________________________________________________________________________________________________________________________________");
+                int count = 0;
+                count++;
+                extendCount = extendCount + 1;
+                String[] items = line.getStatement().split(",");
+                totalInheritCount = totalInheritCount + count + items.length;
+                System.out.println("Inheritence : " + totalInheritCount);
+                System.out.println("Complexity according to Inheritence : " + (totalInheritCount + 1));
             }
             line.setCi(totalInheritCount);
         }
