@@ -48,7 +48,7 @@ public class AnalyzeController {
 			//list=recursiveService.calculateComplexityDueToRecurtion(list);
 			//pass the list to your service here as done in the above line
 
-			list =inheritenceService.calculateComplexityDueToInheritenceStructures(list);
+			list = inheritenceService.calculateComplexityDueToInheritenceStructures(list);
 
 		//pass the list to your service here as done in the above line
 			// make your service read the list line by line and caculate the complexity and set the complexity using given set method
