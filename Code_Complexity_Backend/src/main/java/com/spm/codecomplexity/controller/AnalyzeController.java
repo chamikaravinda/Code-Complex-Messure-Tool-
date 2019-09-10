@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spm.codecomplexity.model.SingleLine;
 import com.spm.codecomplexity.services.ControlStructureService;
 import com.spm.codecomplexity.services.ReadFileService;
+import com.spm.codecomplexity.services.RecursiveService;
 import com.spm.codecomplexity.services.StatmentSizeService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -29,6 +30,9 @@ public class AnalyzeController {
 	@Autowired
 	ControlStructureService controlStuctureService;
 	
+	@Autowired
+	RecursiveService recursiveService;
+	
 	@GetMapping("/controlStructure/analyse/{id}")
 	public List<SingleLine> analyseFile( @PathVariable String id ) {
 	
@@ -37,9 +41,11 @@ public class AnalyzeController {
 		try {
 			list=statmentSizeService.calculateComplexityDueToStatmentSize(list);
 			list=controlStuctureService.calculateComplexityDueToControlStructures(list);
+			//list=recursiveService.calculateComplexityDueToRecurtion(list);
 			//pass the list to your service here as done in the above line 
 			// make your service read the list line by line and caculate the complexity and set the complexity using given set method
 			//use getStament method in SingleLine object to read the line
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
