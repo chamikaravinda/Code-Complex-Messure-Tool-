@@ -22,6 +22,9 @@ public class ReadFileService {
 	UploadRepo uploadRepo;
 
 	public List<SingleLine> readFile(String id) {
+		
+		//to hold the current line number that reads
+		int Lineindex = 0;
 
 		ArrayList<SingleLine> list = new ArrayList<SingleLine>();
 		Upload file = uploadRepo.findBy_id(id);
@@ -39,12 +42,14 @@ public class ReadFileService {
 			String line = reader.readLine();
 
 			while (line != null) {
-
+				Lineindex++;
+				
 				SingleLine obj = new SingleLine();
 
 				line = reader.readLine();
 
-				obj.setStatement(line);
+				obj.setStatement(line+" ");
+				obj.setLineNumber(Lineindex);
 				list.add(obj);
 			}
 

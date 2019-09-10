@@ -28,7 +28,7 @@ public class CommonConstants {
 																	+ MATCH_AND;
 	//========================================================================================//
 	
-	//=================== Constants related to code size=============================//
+	//=================== Constants related to code size======================================//
 	
 	/*------------- weight values -----------------------*/
 	
@@ -192,5 +192,21 @@ public class CommonConstants {
 	public static final String MANIPULATORS = 
 			SUB_FIND_ENDL  + "|"
 			+ SUB_FIND_NEW_LINE;
-		//========================================================================================//
+	
+	
+	public static final String SINGLE_LINE_COMMENT = "(?<!http:|https:)\\/\\/.*(?<!\\>)$";
+	
+	public static final String MULTI_LINE_COMMENT_START = "([/][*])+";
+
+	public static final String MULTI_LINE_COMMENT_END = "(?:.*)([*][/])+";
+
+	//========================================================================================//
+	
+	
+	//=================== Constants related to Recursion======================================//
+
+	public static final String METHOD_DEFINITIONS_IDENTIFIER = "(public|private|static|protected|abstract|native|synchronized) +([a-zA-Z0-9<>._?, ]+) +([a-zA-Z0-9_]+) *"
+			+ "\\\\([a-zA-Z0-9<>\\\\[\\\\]._?, \\n]*\\\\) *([a-zA-Z0-9_ ,\\n]*) *\\\\{";
+	//=======================================================================================//
+
 }

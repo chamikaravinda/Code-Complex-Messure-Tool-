@@ -2,6 +2,7 @@ package com.spm.codecomplexity.model;
 
 public class SingleLine {
 
+	private int lineNumber;
 	private String statement;
 	private int cs;
 	private int ctc;
@@ -10,6 +11,15 @@ public class SingleLine {
 	private int tw;
 	private int cps;
 	private int cr;
+	
+	
+	public int getLineNumber() {
+		return lineNumber;
+	}
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+	
 	public String getStatement() {
 		return statement;
 	}
