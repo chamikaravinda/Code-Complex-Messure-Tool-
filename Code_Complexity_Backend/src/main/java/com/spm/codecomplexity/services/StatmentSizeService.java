@@ -5,7 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.spm.codecomplexity.model.SingleLine;
 import com.spm.codecomplexity.util.CommonConstants;
 
@@ -34,13 +35,15 @@ public class StatmentSizeService {
 	// Complexity score holder
 	int count = 0;
 
+
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	
+
 	public List<SingleLine> calculateComplexityDueToStatmentSize(List<SingleLine> statmentList) throws Exception {
 
-		System.out.println("Request recived for the service layer");
+		LOG.info("DATA Recived for the Statment Size service layer method");
 		
 		for (SingleLine line : statmentList) {
-			System.out.println("---------------------------------------------");
-
 			try {
 				// check for the comments
 				Pattern singleLineCommentpattern = Pattern.compile(singleLineRegex);
@@ -56,11 +59,9 @@ public class StatmentSizeService {
 
 				if (!isAcommentLine) {
 					if (isSingleLineComment) {
-						System.out.println("Single line comment in "+line.getLineNumber());
 						
 						String uncommentedPart = line.getStatement().substring(0, singleLineCommentmatcher.start());
 						
-						System.out.println("Not commented part of the line :"+uncommentedPart);
 						
 						Pattern pattern = Pattern.compile(regex);
 						Matcher matcher = pattern.matcher(uncommentedPart);
@@ -80,9 +81,7 @@ public class StatmentSizeService {
 						line.setCs(count);
 						isAcommentLine = true;
 						if (MultiLineCommentEndmatcher.find()) {
-							String uncommentedPartAfter = line.getStatement()
-									.substring(MultiLineCommentEndmatcher.end());
-							System.out.println("Remaing part:" + uncommentedPartAfter);
+							String uncommentedPartAfter = line.getStatement().substring(MultiLineCommentEndmatcher.end());
 							Pattern pattern_end = Pattern.compile(regex);
 							Matcher matcher_end = pattern_end.matcher(uncommentedPartAfter);
 							while (matcher_end.find()) {
@@ -93,8 +92,6 @@ public class StatmentSizeService {
 						}
 
 					} else {
-
-						System.out.println("No comments in :" + line.getLineNumber() + ":" + line.getStatement());
 						Pattern pattern = Pattern.compile(regex);
 						Matcher matcher = pattern.matcher(line.getStatement());
 						while (matcher.find()) {
@@ -103,11 +100,8 @@ public class StatmentSizeService {
 						line.setCs(count);
 					}
 				} else {
-					System.out.println("A comment"+line.getLineNumber());
 					if (MultiLineCommentEndmatcher.find()) {
-						System.out.println("End of multi line comment found");
 						String uncommentedPartAfter = line.getStatement().substring(MultiLineCommentEndmatcher.end());
-						System.out.println("Remaing part:" + uncommentedPartAfter);
 						Pattern pattern_end = Pattern.compile(regex);
 						Matcher matcher_end = pattern_end.matcher(uncommentedPartAfter);
 						while (matcher_end.find()) {
@@ -123,8 +117,6 @@ public class StatmentSizeService {
 				e.printStackTrace();
 			}
 			count = 0;
-			System.out.println("---------------------------------------------");
-
 		}
 		return statmentList;
 	}

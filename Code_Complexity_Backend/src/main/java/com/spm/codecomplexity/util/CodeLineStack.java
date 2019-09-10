@@ -11,25 +11,25 @@ import com.spm.codecomplexity.model.SingleLine;
 @Component
 public class CodeLineStack {
 
-	private ArrayList<SingleLine> stack;
+	private ArrayList<String> stack;
 
-	public CodeLineStack(ArrayList<SingleLine> stack) {
+	public CodeLineStack(ArrayList<String> stack) {
 		super();
 		this.stack = stack;
 	}
 
-	public void push(SingleLine line){
+	public void push(String line){
 		stack.add(line);
 	}
 	
-	public SingleLine pop() {
+	public String pop() {
 		if(!stack.isEmpty())
 			return stack.remove(size()-1);
 		else
 			throw new EmptyStackException();
 	}
 	
-	public SingleLine peek() {
+	public String peek() {
 		if(!stack.isEmpty())
 			return stack.get(size()-1);
 		else
@@ -39,4 +39,11 @@ public class CodeLineStack {
 	public int size() {
 		return stack.size();
 	}
+
+	@Override
+	public String toString() {
+		return "CodeLineStack [stack=" + stack + "]";
+	}
+	
+	
 }

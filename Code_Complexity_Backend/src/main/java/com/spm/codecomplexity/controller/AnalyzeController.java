@@ -41,7 +41,7 @@ public class AnalyzeController {
 		try {
 			list=statmentSizeService.calculateComplexityDueToStatmentSize(list);
 			list=controlStuctureService.calculateComplexityDueToControlStructures(list);
-			//list=recursiveService.calculateComplexityDueToRecurtion(list);
+			list=recursiveService.calculateComplexityDueToRecurtion(list);
 			//pass the list to your service here as done in the above line 
 			// make your service read the list line by line and caculate the complexity and set the complexity using given set method
 			//use getStament method in SingleLine object to read the line

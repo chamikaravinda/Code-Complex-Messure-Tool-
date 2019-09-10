@@ -26,28 +26,20 @@ public class RecursiveService {
 	  
 	public List<SingleLine> calculateComplexityDueToRecurtion(List<SingleLine> statmentList) throws Exception {
 		
-		LOG.info("Object List Recived by the Recurtion Calculation Service Method");
+		LOG.info("DATA Recived for the Recurtion Calculation Service Method");
 		
 		//Check what are the method names available 
 		for (SingleLine line : statmentList) {
 			String regex = CommonConstants.METHOD_DEFINITIONS_IDENTIFIER;
 
-			Pattern pattern = Pattern.compile(regex);
+			Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 			Matcher matcher = pattern.matcher(line.getStatement());
-		
-			//to hold the initial matches
-			List<String> allMathces = new ArrayList<>();
 			
 			while (matcher.find()) {
-				allMathces.add(matcher.group());
+				System.out.println("Match found");
+				codeLineStack.push(matcher.group());
 			}
-			
-			//add the initial matches in the arraylist to stack
-			for(String match: allMathces ) {
-				System.out.println(match);
-				
-			}
-			
+			System.out.println("These are all the methods"+codeLineStack.toString());
 		}
 		return statmentList;
 	}
