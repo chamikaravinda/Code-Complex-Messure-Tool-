@@ -11,8 +11,7 @@ public class SingleLine {
 	private int tw;
 	private int cps;
 	private int cr;
-	
-	
+
 	public int getLineNumber() {
 		return lineNumber;
 	}
@@ -73,6 +72,4 @@ public class SingleLine {
 		return "ControlStructureType [statement=" + statement + ", cs=" + cs + ", ctc=" + ctc + ", cnc=" + cnc + ", ci="
 				+ ci + ", tw=" + tw + ", cps=" + cps + ", cr=" + cr + "]";
 	}
-	
-	
 }
