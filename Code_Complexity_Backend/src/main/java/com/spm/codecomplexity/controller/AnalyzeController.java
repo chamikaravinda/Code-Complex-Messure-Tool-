@@ -3,6 +3,7 @@ package com.spm.codecomplexity.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.spm.codecomplexity.services.InheritenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +31,16 @@ public class AnalyzeController {
 	
 	@Autowired
 	ControlStructureService controlStuctureService;
-	
+
+	@Autowired
+	InheritenceService inheritenceService;
+
 	@Autowired
 	NestingControlStructureService nestingControlStructureService;
 	
 	@Autowired
 	RecursiveService recursiveService;
-	
+
 	@GetMapping("/controlStructure/analyse/{id}")
 	public List<SingleLine> analyseFile( @PathVariable String id ) {
 	
@@ -45,9 +49,11 @@ public class AnalyzeController {
 		try {
 			list=statmentSizeService.calculateComplexityDueToStatmentSize(list);
 			list=controlStuctureService.calculateComplexityDueToControlStructures(list);
+
 			list=nestingControlStructureService.calculateComplexityDueNestingOfControlStructures(list);
+
 			
-			
+
 		} catch (Exception e) {
 			
 			e.printStackTrace();
