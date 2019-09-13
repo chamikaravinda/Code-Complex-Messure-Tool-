@@ -208,5 +208,5 @@ public class CommonConstants {
 	public static final String METHOD_DEFINITIONS_IDENTIFIER = "(public|private|static|protected|abstract|native|synchronized) +([a-zA-Z0-9<>._?, ]+) +([a-zA-Z0-9_]+) *"
 			+ "\\\\([a-zA-Z0-9<>\\\\[\\\\]._?, \\n]*\\\\) *([a-zA-Z0-9_ ,\\n]*) *\\\\{";
 	//=======================================================================================//
-
+	public static final String TRY_CATCT_IDENTIFIER = "(try|catch|Exception)";
 }
