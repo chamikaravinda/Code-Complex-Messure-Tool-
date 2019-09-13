@@ -8,8 +8,12 @@ public class CommonConstants {
 	private static final String MATCH_KEYWORD_FOR = "for[(]|for\\s[(]*?";
 	private static final String MATCH_KEYWORD_WHILE = "while[(]|while\\s[(]*?";
 	private static final String MATCH_KEYWORD_CATCH = "catch[(]|catch\\s[(]*?";
+	public static final String MATCH_KEYWORD_SWITCH = "switch[(]|switch\\s[(]*?";
+	public static final String MATCH_KEYWORD_CASE = "case.*?";
+	private static final String MATCH_ELSE = "else.*?";
+	private static final String MATCH_RIGHT_CURLY_BRACKET = "[}]";
 
-	
+
 	private static final String MATCH_DOUBLE_OR = "[|][|]";
 	private static final String MATCH_DOUBLE_AND = "\\&&\\s";
 	private static final String MATCH_OR = "[|]";
@@ -26,6 +30,23 @@ public class CommonConstants {
 																	+ MATCH_DOUBLE_AND + "|"
 																	+ MATCH_OR + "|"
 																	+ MATCH_AND;
+	
+	
+	//=================== Constants related to nesting control structures =============================//
+	public static final String MATCH_NESTING_CONTROL_STRUCTURE = MATCH_KEYWORD_IF + "|"
+											+ MATCH_KEYWORD_WHILE + "|"
+											+ MATCH_KEYWORD_FOR + "|"
+											+ MATCH_ELSE + "|"
+											+ MATCH_KEYWORD_SWITCH;
+	
+	public static final String MATCH_NESTING_CONTROL_BREAK = MATCH_RIGHT_CURLY_BRACKET;
+	
+	public static final String MATCH_NESTING_CONTROL_ELSE = MATCH_ELSE;
+	
+	public static final String MATCH_NESTING_SINGLE_LINE_COMMENT = "(?<!http:|https:)\\/\\/.*(?<!\\>)$";
+	public static final String MATCH_NESTING_MULTI_LINE_COMMENT_BEGIN =  "([/][*])+";
+	public static final String MATCH_NESTING_MULTI_LINE_COMMENT_END =  "(?:.*)([*][/])+";
+
 	//========================================================================================//
 	
 	//=================== Constants related to code size======================================//
