@@ -55,6 +55,7 @@ class AnalyseHome extends Component {
                            <tr className = "bg-dark text-light">
                                <th>Line #</th>
                                <th>Statement</th>
+                               <th>Tokens under the size </th>
                                <th>Cs</th>
                                <th>Ctc</th>
                                <th>Cnc</th>
@@ -69,6 +70,7 @@ class AnalyseHome extends Component {
                                <tr>
                                    <td>{index+1}</td>
                                    <td>{result.statement}</td>
+                                   <td>{result.tokensOnStatmentSize}</td>
                                    <td>{result.cs}</td>
                                    <td>{result.ctc}</td>
                                    <td>{result.cnc}</td>
@@ -83,6 +85,7 @@ class AnalyseHome extends Component {
                            <tr className='bg-success'>
                                <td></td>
                                <td><h6>Cp</h6></td>
+                               <td></td>
                                <td></td>
                                <td></td>
                                <td></td>

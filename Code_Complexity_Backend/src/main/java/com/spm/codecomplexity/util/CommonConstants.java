@@ -2,8 +2,7 @@ package com.spm.codecomplexity.util;
 
 public class CommonConstants {
 
-	// =================== Constants related to control structures
-	// =============================//
+	// =================== Constants related to control structures =============================//
 
 	private static final String MATCH_KEYWORD_IF = "if[(]|if\\s[(]*?";
 	private static final String MATCH_KEYWORD_FOR = "for[(]|for\\s[(]*?";
@@ -25,8 +24,7 @@ public class CommonConstants {
 			+ MATCH_OR + "|" + MATCH_AND;
 	// ========================================================================================//
 
-	// =================== Constants related to code
-	// size======================================//
+	// =================== Constants related to code size======================================//
 
 	/*------------- weight values -----------------------*/
 
@@ -38,8 +36,8 @@ public class CommonConstants {
 	private static final String SUB_FIND_MINUS = "\\-\\s";
 	private static final String SUB_FIND_FORWARD_SLASH = "\\/\\s";
 	private static final String SUB_FIND_PERCENTAGE = "\\%\\s";
-	private static final String SUB_FIND_DOUBLE_PLUS = "\\++\\s";
-	private static final String SUB_FIND_DOUBLE_MINUS = "\\--\\s";
+	private static final String SUB_FIND_DOUBLE_PLUS = "\\++.*?";
+	private static final String SUB_FIND_DOUBLE_MINUS = "\\--.*?";
 
 	/*--------------Sub variables related to Relational Operators --------------*/
 	private static final String SUB_FIND_DOUBLE_EQUAL = "\\==\\s";
@@ -102,8 +100,8 @@ public class CommonConstants {
 	private static final String SUB_FIND_KEYWORD_DO_WHILE = "do[-]while.*?";
 	private static final String SUB_FIND_KEYWORD_SWITCH = "switch.*?";
 	private static final String SUB_FIND_KEYWORD_CASE = "case.*?";
-	private static final String SUB_FIND_KEYWORD_SYSTEM = "System*?";
-	private static final String SUB_FIND_KEYWORD_OUT = "out*?";
+	private static final String SUB_FIND_KEYWORD_SYSTEM = "System.*?";
+	private static final String SUB_FIND_KEYWORD_OUT = "out.*?";
 
 	/*---------------sub variables related to manipulators----------------*/
 	private static final String SUB_FIND_ENDL = "endl\\s";
@@ -143,7 +141,7 @@ public class CommonConstants {
 
 	public static final String TEXT_INSIDE_QUOTES = "\"([^\"]*)\"";
 
-	public static final String NUMERIC_VALUES = "[1-9][0-9]*";
+	public static final String NUMERIC_VALUES = "[0]|[1-9][0-9]*";
 
 	public static final String MANIPULATORS = SUB_FIND_ENDL + "|" + SUB_FIND_NEW_LINE;
 
@@ -152,14 +150,19 @@ public class CommonConstants {
 	public static final String MULTI_LINE_COMMENT_START = "([/][*])+";
 
 	public static final String MULTI_LINE_COMMENT_END = "(?:.*)([*][/])+";
+	
+	//public static final String ALL_WORDS = "(?<=^([^\"]|\"[^\"]*\")*)(\\b\\w+\\b)";
+	public static final String ALL_WORDS = "\\w+(?=[^\"]*(\"[^\"]*\"[^\"]*)*$)";
 
 	// ========================================================================================//
 
-	// =================== Constants related to
-	// Recursion======================================//
+	// =================== Constants related to Recursion======================================//
 
-	public static final String METHOD_DEFINITIONS_IDENTIFIER = "^[ \\t]*(?:(?:public|protected|private)\\s+)?(?:(static|final|native|synchronized|abstract|threadsafe|transient|(?:<[?\\w\\[\\] ,&]+>)|(?:<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>)|(?:<[^<]*<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>[^>]*>))\\s+){0,}(?!return)\\b([\\w.]+)\\b(?:|(?:<[?\\w\\[\\] ,&]+>)|(?:<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>)|(?:<[^<]*<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>[^>]*>))((?:\\[\\]){0,})\\s+\\b\\w+\\b\\s*\\(\\s*(?:\\b([\\w.]+)\\b(?:|(?:<[?\\w\\[\\] ,&]+>)|(?:<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>)|(?:<[^<]*<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>[^>]*>))((?:\\[\\]){0,})(\\.\\.\\.)?\\s+(\\w+)\\b(?![>\\[])\\s*(?:,\\s+\\b([\\w.]+)\\b(?:|(?:<[?\\w\\[\\] ,&]+>)|(?:<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>)|(?:<[^<]*<[^<]*<[?\\w\\[\\] ,&]+>[^>]*>[^>]*>))((?:\\[\\]){0,})(\\.\\.\\.)?\\s+(\\w+)\\b(?![>\\[])\\s*){0,})?\\s*\\)(?:\\s*throws [\\w.]+(\\s*,\\s*[\\w.]+))?\\s*(?:\\{|;)[ \\t]*$\r\n"
-			+ "";
+	public static final String METHOD_DEFINITIONS_IDENTIFIER = "(public|protected|private|static|\\s) +[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;])";
+
+	public static final String METHOD_NAME_IDENTIFIER = "\\s*(\\w+)\\(.*?";
+	
+	public static final String CURLY_BRACKET_IDENTIFIER = "[{|}]";
 
 	// =======================================================================================//
 
