@@ -9,7 +9,7 @@ public class CommonConstants {
 	private static final String MATCH_KEYWORD_WHILE = "while[(]|while\\s[(]*?";
 	private static final String MATCH_KEYWORD_CATCH = "catch[(]|catch\\s[(]*?";
 	public static final String MATCH_KEYWORD_SWITCH = "switch[(]|switch\\s[(]*?";
-	public static final String MATCH_KEYWORD_CASE = "case.*?";
+	public static final String MATCH_KEYWORD_CASE = "case\\s";
 	private static final String MATCH_ELSE = "else.*?";
 	private static final String MATCH_RIGHT_CURLY_BRACKET = "[}]";
 

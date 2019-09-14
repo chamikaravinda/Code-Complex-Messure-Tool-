@@ -24,6 +24,7 @@ public class ControlStructureService {
 		int switchIndex = 0;
 		int index = 0;
 		int caseCount = 0;
+		int switchReturnVal = 0;
 		
 		HashMap<Integer, Integer> hmap = new HashMap<Integer, Integer>();
 		
@@ -55,13 +56,15 @@ public class ControlStructureService {
 				}
 				
 				while(matcherBreakPoint.find()) {
+					System.out.println("break point detected");
 					switchFlag = false;
 					hmap.put(index, caseCount);
-					
+					switchReturnVal = caseCount;
 					caseCount = 0;
 				}
 				
 				while( matcherCase.find() ) {
+					System.out.println("case detected");
 					++caseCount;
 				}
 				
@@ -122,7 +125,16 @@ public class ControlStructureService {
 			}
 			
 			++index;
-			line.setCtc(count);
+			//line.setCtc(switchReturnVal);
+			
+			if( switchReturnVal != 0 ) {
+				line.setCtc(switchReturnVal);
+				switchReturnVal = 0;
+			}else {
+				line.setCtc(count);
+			}
+			
+			
 		}
 		
 		
