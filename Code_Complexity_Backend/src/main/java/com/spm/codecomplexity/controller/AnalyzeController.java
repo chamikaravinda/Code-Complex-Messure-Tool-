@@ -73,16 +73,8 @@ public class AnalyzeController {
 		try {
 			list=statmentSizeService.calculateComplexityDueToStatmentSize(list);
 			list=controlStuctureService.calculateComplexityDueToControlStructures(list);
-<<<<<<< Updated upstream
-      list=nestingControlStructureService.calculateComplexityDueNestingOfControlStructures(list);
-=======
-<<<<<<< HEAD
-			list=inheritenceService.calculateComplexityDueToInheritenceStructures(list);
-=======
 			list = inheritenceService.calculateComplexityDueToInheritenceStructures(list);
->>>>>>> f3596a96d4c7089380f3a21494e09991c9b7528f
 			list=nestingControlStructureService.calculateComplexityDueNestingOfControlStructures(list);
->>>>>>> Stashed changes
 			list=totalWightService.calculateTotalWeight(list);
 			list=complexityProgramStatmentService.calculateComplexityOfProgramStatment(list);
 			list=recursiveService.calculateComplexityDueToRecurtion(list);

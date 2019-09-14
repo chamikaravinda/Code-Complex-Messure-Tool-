@@ -182,7 +182,7 @@ public class CommonConstants {
 	// =================== Constants related to
 	// Recursion======================================//
 
-	public static final String METHOD_DEFINITIONS_IDENTIFIER = "(public|protected|private|static|\\s) +[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;])";
+	public static final String METHOD_DEFINITION_IDENTIFIER = "(public|protected|private|static|\\s) +[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;])";
 
 	public static final String METHOD_NAME_IDENTIFIER = "\\s*(\\w+)\\(.*?";
 

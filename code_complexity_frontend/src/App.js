@@ -28,11 +28,9 @@ function App() {
         <Route path="/register" component={UserRegister}/>
         <Route path="/logout" component={Logout} />
         <Route path = "/report/:id" component = {FileReportComponent} />
-<<<<<<< HEAD
-        <Footer/>
-=======
         <Route path = "/assign/:id" component = {AssignTaskComponent} />
->>>>>>> f3596a96d4c7089380f3a21494e09991c9b7528f
+        <Route path = "/assign/:id" component = {AssignTaskComponent} />
+        <Footer/>
       </Router>
   );
 }

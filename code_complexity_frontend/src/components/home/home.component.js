@@ -16,7 +16,7 @@ export default class UserLogin extends Component {
   }
   render() {
     return (
-<<<<<<< HEAD
+
      <div >
        <div className="bg">
           <div className="col-md-6">
@@ -31,13 +31,7 @@ export default class UserLogin extends Component {
             </MDBMask>
           </div>
        </div>
-     </div>
-=======
-        <div>
-          <h3>Welcome</h3>
-
-        </div>
->>>>>>> f3596a96d4c7089380f3a21494e09991c9b7528f
+     </div>         
     );
   }
 }
