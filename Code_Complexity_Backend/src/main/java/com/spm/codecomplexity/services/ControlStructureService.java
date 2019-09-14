@@ -1,6 +1,10 @@
 package com.spm.codecomplexity.services;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +20,13 @@ public class ControlStructureService {
 	public List<SingleLine> calculateComplexityDueToControlStructures(List<SingleLine> statmentList)
 			throws Exception {
 		
+		boolean switchFlag = false;
+		int switchIndex = 0;
+		int index = 0;
+		int caseCount = 0;
+		
+		HashMap<Integer, Integer> hmap = new HashMap<Integer, Integer>();
+		
 		for (SingleLine line : statmentList) {
 			int count = 0;
 
@@ -28,7 +39,33 @@ public class ControlStructureService {
 
 				Pattern patternCatch = Pattern.compile(CommonConstants.MATCH_CONTROL_STRUCTURE_TYPE_CATCH);
 				Matcher matchCatch = patternCatch.matcher(line.getStatement());
-
+				
+				Pattern patternSwitch = Pattern.compile(CommonConstants.MATCH_KEYWORD_SWITCH);
+				Matcher matchSwitch= patternSwitch.matcher(line.getStatement());
+				
+				Pattern patterBreakPoint = Pattern.compile(CommonConstants.MATCH_NESTING_CONTROL_BREAK);
+				Matcher matcherBreakPoint = patterBreakPoint.matcher(line.getStatement());
+				
+				Pattern patternCase = Pattern.compile(CommonConstants.MATCH_KEYWORD_CASE);
+				Matcher matcherCase = patternCase.matcher(line.getStatement());
+				
+				while(matchSwitch.find()) {
+					switchFlag = true;
+					switchIndex = index;
+				}
+				
+				while(matcherBreakPoint.find()) {
+					switchFlag = false;
+					hmap.put(index, caseCount);
+					
+					caseCount = 0;
+				}
+				
+				while( matcherCase.find() ) {
+					++caseCount;
+				}
+				
+			
 				while (matcherIf.find()) {
 					count++;
 					// System.out.println("found: " + count + " : " + matcherIf.start() + " - " +
@@ -83,9 +120,13 @@ public class ControlStructureService {
 			} catch (Exception e) {
 				System.out.println("Exceptoin : " + e);
 			}
-
+			
+			++index;
 			line.setCtc(count);
 		}
+		
+		
+		
 		return statmentList;
 	}
 }

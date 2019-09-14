@@ -39,4 +39,11 @@ public class CodeLineStack {
 	public int size() {
 		return stack.size();
 	}
+
+	@Override
+	public String toString() {
+		return "CodeLineStack [stack=" + stack + "]";
+	}
+	
+	
 }

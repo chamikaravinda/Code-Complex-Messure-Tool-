@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +23,11 @@ public class ReadFileService {
 	@Autowired
 	UploadRepo uploadRepo;
 
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
 	public List<SingleLine> readFile(String id) {
-		
+		LOG.info("Start to read the file");
+
 		//to hold the current line number that reads
 		int Lineindex = 0;
 
@@ -47,16 +52,19 @@ public class ReadFileService {
 				SingleLine obj = new SingleLine();
 
 				line = reader.readLine();
-
 				obj.setStatement(line+" ");
 				obj.setLineNumber(Lineindex);
 				list.add(obj);
 			}
+			
+			LOG.info("File read succesfully");
 
+			
 			reader.close();
 			os.close();
 
 		} catch (Exception e) {
+			LOG.error("Error in reading the file :" + e.getMessage());
 			e.printStackTrace();
 		}
 
