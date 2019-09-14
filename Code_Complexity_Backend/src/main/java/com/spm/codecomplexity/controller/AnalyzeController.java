@@ -1,6 +1,5 @@
 package com.spm.codecomplexity.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.spm.codecomplexity.services.InheritenceService;
@@ -47,7 +46,7 @@ public class AnalyzeController {
 			list=controlStuctureService.calculateComplexityDueToControlStructures(list);
 			//list=recursiveService.calculateComplexityDueToRecurtion(list);
 			//pass the list to your service here as done in the above line
-
+			list = inheritenceService.calculateComplexityDueToInheritenceStructures(list);
 
 
 

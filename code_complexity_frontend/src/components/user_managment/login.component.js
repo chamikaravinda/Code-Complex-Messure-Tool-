@@ -58,7 +58,7 @@ export default class UserLogin extends Component {
       let user={
         email:this.state.email,
         password:this.state.password
-      }
+      };
 
       axios
       .post(constants.url + "/user/login", user)

@@ -12,6 +12,7 @@ import BottomNavBar from "./components/include/bottomNavBar.component";
 import Home from "./components/home/home.component";
 import Logout from "./components/user_managment/logout.component";
 import FileReportComponent from './components/analyse/single-file-report.component'
+import AssignTaskComponent from './components/analyse/assign-task.component'
 
 
 import FileUploadComponent from './components/upload/file-upload.component'
@@ -28,6 +29,7 @@ function App() {
         <Route path="/register" component={UserRegister}/>
         <Route path="/logout" component={Logout} />
         <Route path = "/report/:id" component = {FileReportComponent} />
+        <Route path = "/assign/:id" component = {AssignTaskComponent} />
       </Router>
   );
 }
