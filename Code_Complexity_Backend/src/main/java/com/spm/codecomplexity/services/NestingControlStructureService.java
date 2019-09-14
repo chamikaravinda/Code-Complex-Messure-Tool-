@@ -90,7 +90,7 @@ public class NestingControlStructureService {
 		
 			
 			System.out.println("nester line : " + line.getStatement());
-			if( line.getStatement().isBlank() || line.getStatement().isEmpty()) {
+			if( /*line.getStatement().isBlank() || */line.getStatement().isEmpty()) {
 				System.out.println("null statement");
 				line.setCnc(0);
 			}else {

@@ -35,7 +35,7 @@ public class RecursiveService {
 			Matcher matcher = pattern.matcher(line.getStatement());
 
 			while (matcher.find()) {
-				System.out.println("Match found");
+				System.out.println("Match found:"+ line.getStatement());
 				codeLineStack.push(line);
 			}
 		}
@@ -45,7 +45,7 @@ public class RecursiveService {
 
 			System.out.println("Matched stack not empty ");
 			// to hold the bracket count
-			int bracketCount = 0;
+			int bracketCount = 1;
 
 			boolean isRecursive = false;
 
@@ -64,13 +64,29 @@ public class RecursiveService {
 				// checking method name
 				String methodname = matcher.group();
 				
-				System.out.println("Method name : "+methodname);
+				String methodRegex = createMethodName(methodname);
+				System.out.println("Method name : "+methodRegex);
 				// checking is the method recursive
 				for (SingleLine line : statmentList) {
 
 					// check start from the beging of the fill and ignore if not a line of the
 					// method
-					if (line.getLineNumber() >= checkMethodLine.getLineNumber()) {
+					if (checkMethodLine.getLineNumber()<line.getLineNumber() &&(methodEndLine==0 || line.getLineNumber()<methodEndLine)) {
+						
+						// check the method is there
+
+						Pattern methodpattern = Pattern.compile(methodRegex);
+						Matcher methodmatcher = methodpattern.matcher(line.getStatement());
+						
+						if(methodmatcher.find()) {
+							if(isInsidetheMethod) {
+								if(checkMethodLine.getLineNumber() != line.getLineNumber()) {
+								isRecursive =  true;
+								System.out.println("Recursive method found in line"+line.getLineNumber());
+								}
+							}
+						}
+						
 						System.out.println("line belogns to the method");
 						// check the file using method count
 						String bracketregex = CommonConstants.CURLY_BRACKET_IDENTIFIER;
@@ -86,48 +102,47 @@ public class RecursiveService {
 
 						for (String bracket : brackets) {
 							if (bracket.equals("}")) {
+								System.out.println("Single bracket identified");
 								if (bracketCount != 0) {
 									bracketCount--;
-
+									System.out.println(line.getLineNumber()+"}");
 									if (bracketCount == 0) {
-
 										isInsidetheMethod = false;
 										methodEndLine=line.getLineNumber();
-										
+										System.out.println("Method end found in line:"+methodEndLine);
 									}
 								}
-							} else {
+							} else if(bracket.equals("{")){
+								System.out.println(line.getLineNumber()+"{");
 								bracketCount++;
 							}
 						}
 
-						// check the method is there
-						String methodregex = methodname;
-
-						Pattern methodpattern = Pattern.compile("["+methodregex+"]");
-						Matcher methodmatcher = methodpattern.matcher(methodregex);
 						
-						if(methodmatcher.find()) {
-							if(isInsidetheMethod) {
-								isRecursive =  true;
-								System.out.println("Recursive method found");
-							}
+					}
+				}
+				//add the recursive value if true
+				for(SingleLine rline : statmentList){
+					if(isRecursive) {
+						if(checkMethodLine.getLineNumber()<= rline.getLineNumber() && methodEndLine>= rline.getLineNumber()) {
+							rline.setCr(rline.getCps()*2);
+							System.out.println("Value doubled in:"+rline.getLineNumber());
 						}
 					}
 				}
 			}
 			
-			//add the recursive value if true
-			for(SingleLine rline : statmentList){
-				if(isRecursive) {
-					if(checkMethodLine.getLineNumber()<= rline.getLineNumber() && methodEndLine>= rline.getLineNumber()) {
-						rline.setCr(rline.getCps()*2);
-						System.out.println("Value doubled");
-					}
-				}
-			}
+			
 		}
 
 		return statmentList;
+	}
+	
+	
+	private String createMethodName(String str) {
+	    if (str != null && str.length() > 0) {
+	        str = str.substring(0, str.length() - 1);
+	    }
+	    return str;
 	}
 }
