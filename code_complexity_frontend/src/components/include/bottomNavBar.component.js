@@ -49,7 +49,7 @@ export default class BottomNavbar extends Component {
                   <MDBNavLink to="/upload">Upload</MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to="#!">Assign</MDBNavLink>
+                  <MDBNavLink to="/myTasks">My Tasks</MDBNavLink>
                 </MDBNavItem>
               </MDBNavbarNav>
             </MDBCollapse>

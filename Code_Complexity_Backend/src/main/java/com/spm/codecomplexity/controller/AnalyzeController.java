@@ -3,14 +3,15 @@ package com.spm.codecomplexity.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.spm.codecomplexity.dao.TaskRepo;
 import com.spm.codecomplexity.model.Response;
+import com.spm.codecomplexity.model.Task;
+import com.spm.codecomplexity.model.User;
 import com.spm.codecomplexity.services.InheritenceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.spm.codecomplexity.model.SingleLine;
 import com.spm.codecomplexity.services.ComplexityProgramStatmentService;
@@ -58,6 +59,9 @@ public class AnalyzeController {
 	private int  totalCps = 0;
 	private int  totalCr = 0;
 
+    @Autowired
+    TaskRepo taskRepo;
+
 	@GetMapping("/controlStructure/analyse/{id}")
 	public Response analyseFile( @PathVariable String id ) {
 		totalCs = 0;
@@ -103,5 +107,17 @@ public class AnalyzeController {
 
 		return response;
 	}
+
+    @PostMapping("/task/assign/")
+    public ResponseEntity addTask(@RequestBody Task task ) {
+	    return new ResponseEntity<>(taskRepo.save(task), HttpStatus.OK);
+	}
+
+    @GetMapping("/task/myall/{id}")
+    public List<Task> myTasks(@PathVariable String id) {
+        return (List<Task>) taskRepo.findAll();
+    }
+
+
 	
 }
