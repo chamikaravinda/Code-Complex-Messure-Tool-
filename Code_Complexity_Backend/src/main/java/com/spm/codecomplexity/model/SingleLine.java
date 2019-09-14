@@ -13,6 +13,7 @@ public class SingleLine {
 	private int cr;
 	private String tokensOnStatmentSize="";
 
+
 	public int getLineNumber() {
 		return lineNumber;
 	}
@@ -90,7 +91,7 @@ public class SingleLine {
 		return "ControlStructureType [statement=" + statement + ", cs=" + cs + ", ctc=" + ctc + ", cnc=" + cnc + ", ci="
 				+ ci + ", tw=" + tw + ", cps=" + cps + ", cr=" + cr + "]";
 	}
-
+  
 	public String getTokensOnStatmentSize() {
 		return tokensOnStatmentSize;
 	}
@@ -99,5 +100,4 @@ public class SingleLine {
 		this.tokensOnStatmentSize =this.tokensOnStatmentSize+" | " + tokensOnStatmentSize;
 	}
 
-	
 }
