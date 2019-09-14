@@ -26,7 +26,11 @@ const File = props => {
           <Link to={"/report/" +props.file._id} className="btn btn-primary btn-sm">
             {" "}<MDBIcon icon="chart-line" />
             {" "} Analyse{" "}
-          </Link>
+        </Link>
+            <Link to={"/assign/" +props.file._id} className="btn btn-primary btn-sm">
+                {" "}<MDBIcon icon="bug" style={{ color: '#FFF' }} />
+                {" "} Assign{" "}
+            </Link>
         </div>
       </td>
     </tr>

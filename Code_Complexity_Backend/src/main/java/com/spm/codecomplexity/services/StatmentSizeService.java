@@ -35,6 +35,10 @@ public class StatmentSizeService {
 
 	// regex for all words
 	String allWordRegex = CommonConstants.ALL_WORDS;
+	
+
+	// regex for import statment
+	String importStatment = CommonConstants.IMPORT_STATMETN;
 
 	// ignoring list
 	List<String> toIgnore = new ArrayList<>();
@@ -66,9 +70,17 @@ public class StatmentSizeService {
 
 				Pattern MultiLineCommentEndpattern = Pattern.compile(multiLineRegexEnd);
 				Matcher MultiLineCommentEndmatcher = MultiLineCommentEndpattern.matcher(line.getStatement());
+				
+				Pattern ImportStatmentpattern = Pattern.compile(importStatment);
+				Matcher ImportStatmentmatcher = ImportStatmentpattern.matcher(line.getStatement());
+
 
 				// all words
 				Pattern allWordPattern = Pattern.compile(allWordRegex);
+				
+				if(ImportStatmentmatcher.find()) {
+					continue;
+				}
 
 				if (!isAcommentLine) {
 					if (isSingleLineComment) {
