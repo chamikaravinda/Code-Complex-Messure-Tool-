@@ -57,7 +57,7 @@ public class AnalyzeController {
 		try {
 			list=statmentSizeService.calculateComplexityDueToStatmentSize(list);
 			list=controlStuctureService.calculateComplexityDueToControlStructures(list);
-      list=nestingControlStructureService.calculateComplexityDueNestingOfControlStructures(list);
+			list=nestingControlStructureService.calculateComplexityDueNestingOfControlStructures(list);
 			list=totalWightService.calculateTotalWeight(list);
 			list=complexityProgramStatmentService.calculateComplexityOfProgramStatment(list);
 			list=recursiveService.calculateComplexityDueToRecurtion(list);
