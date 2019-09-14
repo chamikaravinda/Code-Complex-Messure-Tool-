@@ -2,7 +2,8 @@ package com.spm.codecomplexity.util;
 
 public class CommonConstants {
 
-	// =================== Constants related to control structures =============================//
+	// =================== Constants related to control structures
+	// =============================//
 
 	private static final String MATCH_KEYWORD_IF = "if[(]|if\\s[(]*?";
 	private static final String MATCH_KEYWORD_FOR = "for[(]|for\\s[(]*?";
@@ -13,7 +14,6 @@ public class CommonConstants {
 	private static final String MATCH_ELSE = "else.*?";
 	private static final String MATCH_RIGHT_CURLY_BRACKET = "[}]";
 
-
 	private static final String MATCH_DOUBLE_OR = "[|][|]";
 	private static final String MATCH_DOUBLE_AND = "\\&&\\s";
 	private static final String MATCH_OR = "[|]";
@@ -23,34 +23,29 @@ public class CommonConstants {
 
 	public static final String MATCH_CONTROL_STRUCTURE_TYPE_CATCH = MATCH_KEYWORD_CATCH;
 
-  public static final String MATCH_CONTROL_STRUCTURE_TYPE_LOOP = MATCH_KEYWORD_FOR + "|"
-			+ MATCH_KEYWORD_WHILE;
-	
-	public static final String MATCH_CONTROL_STRUCTURE_TYPE_BREAKS = MATCH_DOUBLE_OR + "|" 
-																	+ MATCH_DOUBLE_AND + "|"
-																	+ MATCH_OR + "|"
-																	+ MATCH_AND;
-	
-	
-	//=================== Constants related to nesting control structures =============================//
-	public static final String MATCH_NESTING_CONTROL_STRUCTURE = MATCH_KEYWORD_IF + "|"
-											+ MATCH_KEYWORD_WHILE + "|"
-											+ MATCH_KEYWORD_FOR + "|"
-											+ MATCH_ELSE + "|"
-											+ MATCH_KEYWORD_SWITCH;
-	
-	public static final String MATCH_NESTING_CONTROL_BREAK = MATCH_RIGHT_CURLY_BRACKET;
-	
-	public static final String MATCH_NESTING_CONTROL_ELSE = MATCH_ELSE;
-	
-	public static final String MATCH_NESTING_SINGLE_LINE_COMMENT = "(?<!http:|https:)\\/\\/.*(?<!\\>)$";
-	public static final String MATCH_NESTING_MULTI_LINE_COMMENT_BEGIN =  "([/][*])+";
-	public static final String MATCH_NESTING_MULTI_LINE_COMMENT_END =  "(?:.*)([*][/])+";
+	public static final String MATCH_CONTROL_STRUCTURE_TYPE_LOOP = MATCH_KEYWORD_FOR + "|" + MATCH_KEYWORD_WHILE;
 
-	//========================================================================================//
-	
-	//=================== Constants related to code size======================================//
-	
+	public static final String MATCH_CONTROL_STRUCTURE_TYPE_BREAKS = MATCH_DOUBLE_OR + "|" + MATCH_DOUBLE_AND + "|"
+			+ MATCH_OR + "|" + MATCH_AND;
+
+	// =================== Constants related to nesting control structures
+	// =============================//
+	public static final String MATCH_NESTING_CONTROL_STRUCTURE = MATCH_KEYWORD_IF + "|" + MATCH_KEYWORD_WHILE + "|"
+			+ MATCH_KEYWORD_FOR + "|" + MATCH_ELSE + "|" + MATCH_KEYWORD_SWITCH;
+
+	public static final String MATCH_NESTING_CONTROL_BREAK = MATCH_RIGHT_CURLY_BRACKET;
+
+	public static final String MATCH_NESTING_CONTROL_ELSE = MATCH_ELSE;
+
+	public static final String MATCH_NESTING_SINGLE_LINE_COMMENT = "(?<!http:|https:)\\/\\/.*(?<!\\>)$";
+	public static final String MATCH_NESTING_MULTI_LINE_COMMENT_BEGIN = "([/][*])+";
+	public static final String MATCH_NESTING_MULTI_LINE_COMMENT_END = "(?:.*)([*][/])+";
+
+	// ========================================================================================//
+
+	// =================== Constants related to code
+	// size======================================//
+
 	/*------------- weight values -----------------------*/
 
 	public static final int SIZE_WEIGHT = 1;
@@ -175,23 +170,27 @@ public class CommonConstants {
 	public static final String MULTI_LINE_COMMENT_START = "([/][*])+";
 
 	public static final String MULTI_LINE_COMMENT_END = "(?:.*)([*][/])+";
-	
-	//public static final String ALL_WORDS = "(?<=^([^\"]|\"[^\"]*\")*)(\\b\\w+\\b)";
+
+	// public static final String ALL_WORDS =
+	// "(?<=^([^\"]|\"[^\"]*\")*)(\\b\\w+\\b)";
 	public static final String ALL_WORDS = "\\w+(?=[^\"]*(\"[^\"]*\"[^\"]*)*$)";
+
+	public static final String IMPORT_STATMETN = "(import)\\s+[\\w]+.";
 
 	// ========================================================================================//
 
-	// =================== Constants related to Recursion======================================//
+	// =================== Constants related to
+	// Recursion======================================//
 
 	public static final String METHOD_DEFINITION_IDENTIFIER = "(public|protected|private|static|\\s) +[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;])";
 
 	public static final String METHOD_NAME_IDENTIFIER = "\\s*(\\w+)\\(.*?";
-	
+
 	public static final String CURLY_BRACKET_IDENTIFIER = "[{|}]";
 
 	// =======================================================================================//
 	public static final String METHOD_DEFINITIONS_IDENTIFIER = "(public|private|static|protected|abstract|native|synchronized) +([a-zA-Z0-9<>._?, ]+) +([a-zA-Z0-9_]+) *"
 			+ "\\\\([a-zA-Z0-9<>\\\\[\\\\]._?, \\n]*\\\\) *([a-zA-Z0-9_ ,\\n]*) *\\\\{";
-	//=======================================================================================//
+	// =======================================================================================//
 	public static final String TRY_CATCT_IDENTIFIER = "(try|catch|Exception)";
 }

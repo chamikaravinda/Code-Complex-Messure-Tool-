@@ -48,7 +48,7 @@ export default class TopNavbar extends Component {
               <MDBNavItem>
                 <MDBDropdown>
                   <MDBDropdownToggle nav caret>
-                    <MDBIcon icon="user" />
+                    <MDBIcon icon="user" />{" "+localStorage.getItem('name')}
                   </MDBDropdownToggle>
                   <MDBDropdownMenu className="dropdown-default">
                     <MDBDropdownItem href="/logout">Logout</MDBDropdownItem>
