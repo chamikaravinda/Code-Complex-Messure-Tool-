@@ -29,7 +29,7 @@ public class RecursiveService {
 
 		// Check what are the method names available
 		for (SingleLine line : statmentList) {
-			String regex = CommonConstants.METHOD_DEFINITIONS_IDENTIFIER;
+			String regex = CommonConstants.METHOD_DEFINITION_IDENTIFIER;
 
 			Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 			Matcher matcher = pattern.matcher(line.getStatement());
