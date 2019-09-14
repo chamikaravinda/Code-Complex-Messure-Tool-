@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import UserRegister from "./components/user_managment/register.component";
 import UserLogin from "./components/user_managment/login.component";
 import TopNavBar from "./components/include/topNavBar.component";
-import BottomNavBar from "./components/include/bottomNavBar.component";
+import Footer from "./components/include/footer.component";
 import Home from "./components/home/home.component";
 import Logout from "./components/user_managment/logout.component";
 import FileReportComponent from './components/analyse/single-file-report.component'
@@ -22,7 +22,6 @@ function App() {
   return (
       <Router>
         <TopNavBar />
-        <BottomNavBar />
         <Route exact path="/" component={Home} />
         <Route path = "/upload" component = {FileUploadComponent} />
         <Route path="/login" component={UserLogin}/>
@@ -30,6 +29,8 @@ function App() {
         <Route path="/logout" component={Logout} />
         <Route path = "/report/:id" component = {FileReportComponent} />
         <Route path = "/assign/:id" component = {AssignTaskComponent} />
+        <Route path = "/assign/:id" component = {AssignTaskComponent} />
+        <Footer/>
       </Router>
   );
 }

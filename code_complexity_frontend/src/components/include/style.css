@@ -1,0 +1,14 @@
+body, html {
+    height: 100%;
+  }
+  .bg {
+    background-image: url("images/cct_background.jpg");
+    height: 84.6vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .space-5{
+    height: 20.6vh;
+  }
