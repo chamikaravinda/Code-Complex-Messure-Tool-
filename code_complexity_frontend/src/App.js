@@ -30,7 +30,6 @@ function App() {
         <Route path="/logout" component={Logout} />
         <Route path = "/report/:id" component = {FileReportComponent} />
         <Route path = "/assign/:id" component = {AssignTaskComponent} />
-        <Route path = "/assign/:id" component = {AssignTaskComponent} />
         <Footer/>
         <Route path = "/myTasks" component = {MyTasks} />
       </Router>

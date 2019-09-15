@@ -75,7 +75,7 @@ export default class AssignTask extends Component {
         const url = constants.url + "/task/assign/";
         axios.post(url, task).then(res => {
             console.log(res);
-            this.props.history.push('/upload/');
+            this.props.history.push('/myTasks/');
 
         }).catch(err => {
             console.log(err);
